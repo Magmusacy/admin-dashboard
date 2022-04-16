@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 * {
   font-family: 'Roboto', sans-serif;
+  font-weight: bold;
   box-sizing: border-box;
+  font-size: 1
 }
 
 ul {
@@ -10,14 +13,123 @@ ul {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   display: grid;
   height: 100vh;
-  grid-template: 1fr 3fr / 1fr 5fr;
+  grid-template: 1fr 4fr / 1fr 5fr;
 }
 
 #header {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   grid-column: 2 / 3;
+  font-size: 1.2rem;
+}
+
+#header .upper-section,
+#header .lower-section {
+  display: grid;
+  padding-left: 30px;
+  padding-right: 50px;
+  grid-template: 1fr / repeat(5, 1fr);
+  align-items: center;
+  background-color: white;
+}
+
+#header .upper-section form {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  grid-column: 1 / 4;
+  grid-template-columns: auto 1fr;
+}
+
+#header .upper-section input[type=text] {
+  width: max(300px, 75%);
+  height: 30px;
+  border-radius: 13px;
+  padding: 15px;
+  background-color: rgb(222, 222, 222);
+  border: 0px;
+  outline: none;
+}
+
+#header .upper-section img[src$=".jpg"] {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#header .upper-section .user-panel {
+  grid-column: -2;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 20px;
+  justify-content: end;
+  align-items: center;
+}
+
+#header .lower-section {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+}
+
+#header .lower-section .user-actions {
+  display: flex;
+  grid-column: -2;
+  gap: 20px;
+}
+
+#header .lower-section .user-actions a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  border-radius: 35px;
+  padding: 25px;
+  background-color: #f87171;
+}
+
+#header .lower-section .user-info {
+  display: grid;
+  grid-column: 1 / span 2;
+  grid-template-areas: "pfp description"
+                       "pfp name";
+  grid-template-columns: repeat(2, max-content);
+  grid-template-rows: 1fr 1fr;
+  column-gap: 20px;
+}
+
+#header .lower-section img[src$=".jpg"] {
+  grid-area: pfp;
+  align-self: center;
+  border-radius: 50%;;
+  height: 100px;
+  width: 100px;
+}
+
+#header .lower-section p:first-of-type {
+  grid-area: description;
+  align-self: end;
+  margin: 5px;
+}
+
+#header .lower-section p:last-of-type {
+  grid-area: name;
+  align-self: start;
+  margin: 5px;
+}
+
+.username {
+  font-size: 1.5rem;
 }
 
 #side-bar {
@@ -33,8 +145,6 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  text-decoration: none;
-  color: black;
   margin-bottom: 5px;
 }
 
@@ -42,7 +152,8 @@ body {
   padding: 0 20px;
 }
 
-#side-bar a:hover {
+#side-bar a:hover,
+#header .user-actions a:hover {
   background: #ef4444;
 }
 
